@@ -17,6 +17,7 @@ require_once 'formulae/FormulaChecker.php';
 
 function sat($formula) {
     $formula = escapeshellarg($formula);
+		error_log("formula is: " . json_encode($formula));
     $output = `echo $formula | ./limboole -s`;
     return preg_match('/^% SATISFIABLE/', $output) >= 1;
 }
